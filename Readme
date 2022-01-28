@@ -1,10 +1,7 @@
 Readme
 
-comp2406
-Assignment 2
-
-Erica Morgan
-101015691
+Description 
+A server capable of serving the restaurant order form. The server will also be responsible for tracking some sales data for each restaurant and providing that sales data in HTML format when requested. All order data that the server stores is stored in RAM.
 
 Design Decisions
 	I decided to keep my orginal client script and modify it so that the page is built based on the restaurant data that is sent from the server
