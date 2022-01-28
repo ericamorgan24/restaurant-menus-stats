@@ -5,7 +5,6 @@ A server capable of serving the restaurant order form. The server will also be r
 
 Design Decisions
 	I decided to keep my orginal client script and modify it so that the page is built based on the restaurant data that is sent from the server
-
 	I decided to use modify the order page whenever the restaurant was changed, instead of requesting a brand new page from a pug template. This way, I would not have to request a whole page from the server everytime, but rather, I could just update parts of the page instead of the whole page.
 
 Precise Instructions
