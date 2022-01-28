@@ -1,0 +1,29 @@
+doctype html
+html
+	head
+		title Stats Page
+		link(rel="stylesheet" type="text/css" href="order.css")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8")
+	body
+		include ../partials/header
+		h2 Stats
+		div#stats
+			table
+				tr
+					th Restaurant
+					th Number of Orders
+					th Average Order Total
+					th Most Popular Item
+				
+				each restaurant in restaurants
+					tr
+						td #{restaurant.name}
+						td #{restaurant.totalOrders}
+						if restaurant.totalOrders == 0
+							td $0.00
+						else
+							td $#{(restaurant.totalCost/restaurant.totalOrders).toFixed(2)}
+						if restaurant.popular == ""
+							td TBD
+						else
+							td #{restaurant.popular}

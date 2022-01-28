@@ -1,0 +1,73 @@
+doctype html
+html(lang="en-US")
+	head
+		title Restaurant Page
+		link(rel="stylesheet" type="text/css" href="order.css")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8")
+
+	body(onload='init('+JSON.stringify(chosen)+')')
+		div(id="topOfPage")
+
+		include ../partials/header
+		br
+		header
+			div Select Restaurant:
+			select#select
+				each restaurant in restaurants
+					if restaurant.name == chosen.name
+						option(value = restaurant.name selected) #{restaurant.name}
+					else
+						option(value = restaurant.name) #{restaurant.name}
+
+		
+		div(id="top")
+			div(id="name") #{chosen.name}
+			div(id="min") Minimum Order: $#{chosen.min_order.toFixed(2)}
+			div(id="fee") Delivery Fee: $#{chosen.delivery_fee.toFixed(2)}
+			br
+
+		section(id="menu" class="grid-container")
+			div(id="categories")
+				div(class="heading") Categories
+				ul
+					each category in Object.keys(chosen.menu)
+						li
+							a(href="#"+category) #{category}
+			div(id="food")
+				each category in Object.keys(chosen.menu)
+					div(id=category)
+						div(class="menuHeading") #{category}
+						each item in Object.keys(chosen.menu[category])
+							div(class="nameClass") #{chosen.menu[category][item].name}
+								img(src='add.jpg' alt='add' class='imgClass' onclick='adjustQuantity('+ '"'+
+								chosen.menu[category][item].name+ '"' + ','+ '"' + chosen.menu[category][item].price+ '"' + ', 1)')
+							div(class="descriptionClass") #{chosen.menu[category][item].description}
+							div(class="priceClass") $#{chosen.menu[category][item].price.toFixed(2)}
+							br
+					br
+			div(id="summary")
+				div(id="title" class='heading') Summary
+				table(id="table")
+				div(id="subtotal")
+					div Subtotal: $0.00
+					div Delivery Fee: $#{chosen.delivery_fee.toFixed(2)}
+					div Tax: $0.00
+					div Total: $#{chosen.delivery_fee.toFixed(2)}
+
+		div
+			a(href="#topOfPage")
+				img(src="top.png" alt="Top of page" id="jump")
+
+		script(src="restaurant-client.js")
+
+
+
+
+
+
+
+
+
+
+
+
